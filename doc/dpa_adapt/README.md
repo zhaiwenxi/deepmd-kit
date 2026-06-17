@@ -141,7 +141,7 @@ model = DPAFineTuner(
     # ---- MFT-specific ----
     aux_branch="MP_traj_v024_alldata_mixu",   # checkpoint branch for aux force head
     aux_prob=0.5,                              # aux sampling weight (downstream = 1 - aux_prob)
-    downstream_task_type="property",           # "property" | "ener" (legacy default)
+    downstream_task_type="property",           # "property" | "ener"
     aux_type_map=None,                         # element symbols for aux data (auto-detect)
     downstream_type_map=None,                  # element symbols for downstream data
     aux_batch_size=None,                       # batch size for aux head (None = auto)
@@ -177,7 +177,7 @@ metrics = model.evaluate(data="/data/test")    # .mae, .rmse, .r2
 |-----------|------|---------|-------------|
 | `aux_branch` | `str` | `"MP_traj_v024_alldata_mixu"` | Checkpoint branch to initialize the auxiliary force/energy head. Use `dp --pt show <ckpt> model-branch` to list options. |
 | `aux_prob` | `float` | `0.5` | Sampling weight for the aux branch. Downstream weight = `1.0 - aux_prob`. |
-| `downstream_task_type` | `str` | `"ener"` | `"property"` (intensive scalar head) or `"ener"` (force-field head, legacy default) |
+| `downstream_task_type` | `str` | `"property"` | `"property"` (intensive scalar head) or `"ener"` (force-field head) |
 | `aux_type_map` | `list[str]` or `None` | `None` | Element symbols for aux data; auto-detected if `None` |
 | `downstream_type_map` | `list[str]` or `None` | `None` | Element symbols for downstream data; auto-detected if `None` |
 | `aux_batch_size` | `str` or `None` | `None` | Batch size for aux head; auto-selected if `None` |
