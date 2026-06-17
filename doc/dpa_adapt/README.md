@@ -55,6 +55,7 @@ model = DPAFineTuner(
     strategy="mft",
     property_name="homo",
     aux_branch="MP_traj_v024_alldata_mixu",
+    downstream_task_type="property",  # "property" (default) | "ener"
 )
 model.fit(train_data="/data/train", aux_data="/data/spice2")
 pred = model.predict(data=str("/data/test"))
