@@ -24,7 +24,7 @@ For more information, check the [documentation](https://deepmd.readthedocs.io/).
 - **implements the Deep Potential series models**, which have been successfully applied to finite and extended systems, including organic molecules, metals, semiconductors, insulators, etc.
 - **implements MPI and GPU supports**, making it highly efficient for high-performance parallel and distributed computing.
 - **highly modularized**, easy to adapt to different descriptors for deep learning-based potential energy models.
-- **fine-tunes pre-trained DPA models through a scikit-learn-style Python API**, via [`dpa_adapt`](dpa_adapt/README.md) — construct a `DPAFineTuner`, then `fit` and `predict` to adapt a large pre-trained model to your own property dataset, with no input files to write.
+- **fine-tunes pre-trained DPA models through a scikit-learn-style Python API**, via [`dpa_adapt`](doc/dpa_adapt/README.md) — construct a `DPAFineTuner`, then `fit` and `predict` to adapt a large pre-trained model to your own property dataset, with no input files to write.
 
 ### License and credits
 

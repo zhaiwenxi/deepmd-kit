@@ -1,5 +1,9 @@
 # SPDX-License-Identifier: LGPL-3.0-or-later
-"""Tests for dpa_adapt data conversion pipelines."""
+"""Tests for formula CSV + POSCAR template → deepmd/npy conversion.
+
+Originally from tests/test_dpa_tools.py — moved here to consolidate all
+dpa_adapt tests under source/tests/dpa_adapt/.
+"""
 
 import os
 import tempfile
@@ -9,6 +13,7 @@ from pathlib import (
 
 import numpy as np
 import pytest
+
 
 # ---------------------------------------------------------------------------
 # helpers
@@ -65,7 +70,10 @@ def _write_formula_csv(path: str, *, with_header: bool = False) -> list[str]:
 
 class TestFormulaCsvToNpy:
     def test_basic(self) -> None:
-        """3 formulas × 2 sets → 6 valid deepmd/npy systems."""
+        """Headerless CSV: 3 formulas × 2 sets → 6 valid deepmd/npy systems.
+
+        Uses integer column indices (0=formula, 1=property) for headerless input.
+        """
         with tempfile.TemporaryDirectory() as tmp:
             poscar_path = os.path.join(tmp, "POSCAR")
             csv_path = os.path.join(tmp, "data.csv")
@@ -82,6 +90,8 @@ class TestFormulaCsvToNpy:
                 csv_path=csv_path,
                 output_dir=out_dir,
                 poscar=poscar_path,
+                formula_col="0",
+                property_col="1",
                 property_name="overpotential",
                 sets=2,
                 seed=0,
@@ -126,6 +136,8 @@ class TestFormulaCsvToNpy:
                 csv_path=csv_path,
                 output_dir=out_dir,
                 poscar=poscar_path,
+                formula_col="formula",
+                property_col="overpotential",
                 property_name="overpotential",
                 sets=2,
                 seed=0,
