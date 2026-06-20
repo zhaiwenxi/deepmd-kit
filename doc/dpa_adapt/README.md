@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-pip install deepmd-kit[dpa-adapt]
+pip install -e ".[dpa-adapt]"
 ```
 
 Installs `scikit-learn`, `dpdata`, `ase`, `rdkit`, and `e3nn` alongside DeePMD-kit. For GPU PyTorch, install your preferred PyTorch build first.
